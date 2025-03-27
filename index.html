@@ -31,7 +31,40 @@
         </div>
 
         <div class="agents-grid" id="agents-container">
-            <!-- Agent cards will be inserted here by JavaScript -->
+            <!-- Static agent cards as fallback -->
+            <div class="agent-card">
+                <div class="agent-image">
+                    <img src="images/code-assistant.png" alt="Code Assistant" onerror="this.src='images/placeholder.png'">
+                </div>
+                <div class="agent-content">
+                    <span class="agent-category">development</span>
+                    <h3 class="agent-name">Code Assistant</h3>
+                    <p class="agent-description">Helps you write, review, and debug code across multiple programming languages with intelligent suggestions.</p>
+                    <a href="goose://agents/code-assistant" class="agent-link">Open Agent</a>
+                </div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-image">
+                    <img src="images/meeting-scribe.png" alt="Meeting Scribe" onerror="this.src='images/placeholder.png'">
+                </div>
+                <div class="agent-content">
+                    <span class="agent-category">productivity</span>
+                    <h3 class="agent-name">Meeting Scribe</h3>
+                    <p class="agent-description">Takes notes during meetings, summarizes key points, and creates action items for team members.</p>
+                    <a href="goose://agents/meeting-scribe" class="agent-link">Open Agent</a>
+                </div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-image">
+                    <img src="images/travel-planner.png" alt="Travel Planner" onerror="this.src='images/placeholder.png'">
+                </div>
+                <div class="agent-content">
+                    <span class="agent-category">utilities</span>
+                    <h3 class="agent-name">Travel Planner</h3>
+                    <p class="agent-description">Plans your trips, suggests itineraries, and helps you find the best deals on flights and accommodations.</p>
+                    <a href="goose://agents/travel-planner" class="agent-link">Open Agent</a>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -43,5 +76,18 @@
 
     <script src="js/agents-data.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        // Fallback in case the main JavaScript fails
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const agentsContainer = document.getElementById('agents-container');
+                // If container is empty after 1 second, the main JS probably failed
+                if (agentsContainer && agentsContainer.children.length <= 3) {
+                    console.log('Fallback: Loading all agents statically');
+                    // We already have 3 static agents as fallback
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>

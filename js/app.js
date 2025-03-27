@@ -6,7 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategory = 'all';
     let searchTerm = '';
     
-    // Initial render
+    // Check if agents data is available
+    if (typeof agents === 'undefined') {
+        console.error('Agents data is not defined. Using static content.');
+        return;
+    }
+    
+    // Initial render - clear static content first
+    agentsContainer.innerHTML = '';
     renderAgents();
     
     // Search functionality
@@ -62,5 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             agentsContainer.appendChild(agentCard);
         });
+        
+        console.log(`Rendered ${filteredAgents.length} agents`);
     }
 });
