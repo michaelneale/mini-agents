@@ -1,0 +1,5 @@
+theme: jekyll-theme-minimal
+title: Mini Agents Gallery
+description: A gallery of mini agents with goose:// deep links
+baseurl: "/mini-agents"
+url: "https://michaelneale.github.io"
